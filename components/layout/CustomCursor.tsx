@@ -33,7 +33,7 @@ export default function CustomCursor() {
         className="rounded-full"
         style={{
           width: 12, height: 12,
-          background: "linear-gradient(135deg,#6C47FF,#00C2FF)",
+          background: "#0A0A0A",
           mixBlendMode: "multiply",
         }}
         whileHover={{ scale: 3.5 }}

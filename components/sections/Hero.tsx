@@ -3,150 +3,149 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const TYPED_WORDS = [
-  "Content Writing",
-  "Brand Stories",
-  "SEO Articles",
-  "Social Media",
-  "Video Scripts",
-  "Thought Leadership",
-];
+const TYPED_WORDS = ["Content Writing", "Brand Storytelling", "SEO Articles", "Social Media", "Video Scripts", "Thought Leadership"];
 
-const floatingCards = [
-  { icon: "✍️", label: "Content Writing", sub: "500+ pieces/month", cls: "float-a top-[12%] right-[8%]" },
-  { icon: "📈", label: "SEO Growth",       sub: "+320% organic traffic", cls: "float-b top-[48%] right-[2%]" },
-  { icon: "🎨", label: "Brand Design",     sub: "Visual storytelling",   cls: "float-c bottom-[18%] right-[14%]" },
+const BG_WORDS = [
+  { text: "strategy",     x: "8%",  y: "18%", size: 56, delay: 0    },
+  { text: "editorial",    x: "72%", y: "10%", size: 38, delay: 0.4  },
+  { text: "SEO",          x: "82%", y: "38%", size: 72, delay: 0.9  },
+  { text: "storytelling", x: "4%",  y: "62%", size: 42, delay: 0.2  },
+  { text: "branding",     x: "60%", y: "68%", size: 50, delay: 0.7  },
+  { text: "copy",         x: "44%", y: "22%", size: 64, delay: 1.1  },
+  { text: "engagement",   x: "20%", y: "80%", size: 36, delay: 0.5  },
+  { text: "growth",       x: "78%", y: "78%", size: 58, delay: 1.3  },
+  { text: "audience",     x: "35%", y: "52%", size: 30, delay: 0.3  },
+  { text: "keywords",     x: "88%", y: "54%", size: 34, delay: 0.8  },
 ];
 
 export default function Hero() {
   const [wordIdx, setWordIdx] = useState(0);
-  const [displayed, setDisplayd] = useState("");
+  const [displayed, setDisplayed] = useState("");
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     const target = TYPED_WORDS[wordIdx];
-    let timeout: ReturnType<typeof setTimeout>;
-
+    let t: ReturnType<typeof setTimeout>;
     if (!deleting && displayed.length < target.length) {
-      timeout = setTimeout(() => setDisplayd(target.slice(0, displayed.length + 1)), 70);
+      t = setTimeout(() => setDisplayed(target.slice(0, displayed.length + 1)), 65);
     } else if (!deleting && displayed.length === target.length) {
-      timeout = setTimeout(() => setDeleting(true), 1800);
+      t = setTimeout(() => setDeleting(true), 1800);
     } else if (deleting && displayed.length > 0) {
-      timeout = setTimeout(() => setDisplayd(displayed.slice(0, -1)), 40);
-    } else if (deleting && displayed.length === 0) {
+      t = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 38);
+    } else {
       setDeleting(false);
       setWordIdx((i) => (i + 1) % TYPED_WORDS.length);
     }
-    return () => clearTimeout(timeout);
+    return () => clearTimeout(t);
   }, [displayed, deleting, wordIdx]);
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16" aria-label="Hero">
-      {/* Background gradient mesh */}
-      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-[-120px] right-[-80px] w-[600px] h-[600px] rounded-full opacity-30"
-          style={{ background: "radial-gradient(circle, rgba(108,71,255,0.18) 0%, transparent 70%)" }} />
-        <div className="absolute bottom-[-80px] left-[-60px] w-[500px] h-[500px] rounded-full opacity-20"
-          style={{ background: "radial-gradient(circle, rgba(0,194,255,0.18) 0%, transparent 70%)" }} />
-      </div>
-
-      {/* Floating glass cards — desktop only */}
-      <div className="hidden lg:block" aria-hidden="true">
-        {floatingCards.map((c) => (
-          <div key={c.label} className={`glass-card absolute z-10 px-4 py-3 rounded-2xl w-48 ${c.cls}`}>
-            <p className="text-xl mb-1">{c.icon}</p>
-            <p className="text-[13px] font-semibold text-[#1D1D1F]">{c.label}</p>
-            <p className="text-[11px] text-[#6E6E73] mt-0.5">{c.sub}</p>
-          </div>
+      {/* Floating background words */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none" aria-hidden="true">
+        {BG_WORDS.map((w) => (
+          <motion.span
+            key={w.text}
+            className="absolute font-display italic font-bold"
+            style={{ left: w.x, top: w.y, fontSize: w.size, color: "transparent", WebkitTextStroke: "1.5px rgba(0,0,0,0.07)" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: [0, -10, 0] }}
+            transition={{
+              opacity: { delay: w.delay, duration: 1.2 },
+              y: { delay: w.delay, duration: 5 + w.delay, repeat: Infinity, ease: "easeInOut" },
+            }}
+          >
+            {w.text}
+          </motion.span>
         ))}
+        {/* Subtle warm orbs */}
+        <div className="absolute top-[-100px] right-[-80px] w-[560px] h-[560px] rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(0,0,0,0.03) 0%, transparent 70%)" }} />
+        <div className="absolute bottom-[-60px] left-[-60px] w-[420px] h-[420px] rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(0,0,0,0.025) 0%, transparent 70%)" }} />
       </div>
 
-      {/* Main content */}
+      {/* Content */}
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10 w-full">
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#6C47FF] mb-6 font-medium"
+          initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+          className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#6B6B6B] mb-8 font-medium"
         >
           ✦ Premium Content Agency · Since 2016 · Surat, India
         </motion.p>
 
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          className="font-display leading-[1.0] tracking-[-0.02em] text-[#1D1D1F]"
-          style={{ fontSize: "clamp(44px, 8vw, 110px)" }}
+          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
+          className="font-display leading-[1.0] tracking-[-0.02em] text-[#0A0A0A]"
+          style={{ fontSize: "clamp(48px, 8.5vw, 118px)" }}
         >
-          We Create
-          <br />
-          <span className="gradient-text">You Grow.</span>
+          Words That<br />
+          <span className="gradient-text">Move Markets.</span>
         </motion.h1>
 
-        {/* Typing line */}
+        {/* Typewriter */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.6 }}
-          className="mt-8 flex items-center gap-3"
-          aria-live="polite"
-          aria-label={`Specializing in ${displayed}`}
+          className="mt-8 flex flex-wrap items-center gap-2" aria-live="polite"
         >
-          <span className="text-[#6E6E73] text-[18px] md:text-[22px] font-medium">Specializing in</span>
-          <span className="text-[18px] md:text-[22px] font-semibold text-[#1D1D1F]">
+          <span className="text-[#6B6B6B] text-[18px] md:text-[21px] font-medium">Specializing in</span>
+          <span className="text-[18px] md:text-[21px] font-semibold text-[#0A0A0A] px-3 py-1 rounded-lg min-w-[200px]"
+            style={{ background: "rgba(0,0,0,0.05)" }}>
             {displayed}
-            <span className="cursor-blink ml-0.5 text-[#6C47FF]">|</span>
+            <span className="cursor-blink ml-0.5 text-[#0A0A0A]">|</span>
           </span>
         </motion.div>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          className="mt-6 text-[16px] text-[#6E6E73] max-w-xl leading-relaxed"
+          className="mt-6 text-[16px] md:text-[17px] text-[#6B6B6B] max-w-[500px] leading-[1.75]"
         >
-          A unison of professionals in Surat creating unparalleled, super-crisp content for all kinds of businesses — content writing, graphics, video, social media & more.
+          A unison of Surat's sharpest writers, designers, and strategists crafting content that builds authority, drives traffic, and turns readers into customers.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.65, duration: 0.6 }}
           className="mt-10 flex flex-wrap items-center gap-4"
         >
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[14px] font-semibold text-white shadow-lg shadow-violet-200 hover:shadow-violet-300 transition-all duration-300 hover:scale-105"
-            style={{ background: "linear-gradient(135deg,#6C47FF,#00C2FF)" }}
-          >
+          <a href="#contact" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[14px] font-semibold btn-black">
             Start a Project →
           </a>
-          <a
-            href="#work"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[14px] font-semibold text-[#1D1D1F] glass hover:shadow-md transition-all duration-300"
-          >
-            See Our Work
+          <a href="#services" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[14px] font-semibold btn-outline">
+            Explore Services
+          </a>
+          <a href="tel:09016249312" className="inline-flex items-center gap-1.5 text-[13px] text-[#6B6B6B] hover:text-[#0A0A0A] transition-colors font-medium ml-2">
+            📞 090162 49312
           </a>
         </motion.div>
 
-        {/* Trust badges */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           transition={{ delay: 0.9, duration: 0.6 }}
-          className="mt-14 flex flex-wrap gap-4"
+          className="mt-12 flex flex-wrap gap-3"
         >
-          {["8+ Years Experience", "500+ Happy Clients", "Mon–Sat 10–7 PM"].map((badge) => (
-            <span
-              key={badge}
-              className="glass px-4 py-2 rounded-full text-[12px] text-[#6E6E73] font-medium"
-            >
-              {badge}
+          {[{ icon: "🏆", text: "8+ Years Experience" }, { icon: "🤝", text: "500+ Happy Clients" }, { icon: "📍", text: "Surat, Gujarat" }, { icon: "🕐", text: "Mon–Sat 10–7 PM" }].map((b) => (
+            <span key={b.text} className="glass px-4 py-2 rounded-full text-[12px] text-[#6B6B6B] font-medium flex items-center gap-1.5">
+              {b.icon} {b.text}
             </span>
           ))}
         </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 0.6 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2" aria-hidden="true"
+      >
+        <span className="font-mono text-[10px] uppercase tracking-eyebrow text-[#6B6B6B]">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+          className="w-px h-8 rounded-full bg-[#0A0A0A]"
+        />
+      </motion.div>
     </section>
   );
 }

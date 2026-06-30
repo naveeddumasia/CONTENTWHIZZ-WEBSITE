@@ -5,7 +5,7 @@ export default function Ticker() {
   return (
     <div
       className="w-full overflow-hidden h-[48px] flex items-center"
-      style={{ background: "linear-gradient(135deg,#6C47FF,#00C2FF)" }}
+      style={{ background: "#0A0A0A" }}
       aria-label="Services ticker"
     >
       <div className="marquee-track whitespace-nowrap flex items-center">

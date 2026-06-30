@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 
 const team = [
-  { initials: "CW", name: "ContentWhizz", title: "Creative Director", g: "from-violet-500 to-blue-400" },
-  { initials: "CS", name: "Content Team",  title: "Senior Writers",    g: "from-blue-400 to-cyan-400" },
-  { initials: "DS", name: "Design Studio", title: "Visual Creators",   g: "from-cyan-400 to-teal-400" },
+  { initials: "CW", name: "ContentWhizz", title: "Creative Director", g: "from-[#0A0A0A] to-[#2A2A2A]" },
+  { initials: "CS", name: "Content Team",  title: "Senior Writers",    g: "from-[#2A2A2A] to-[#4A4A4A]" },
+  { initials: "DS", name: "Design Studio", title: "Visual Creators",   g: "from-[#444444] to-[#666666]" },
 ];
 
 export default function About() {
@@ -20,7 +20,7 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <p className="font-mono text-[11px] uppercase tracking-eyebrow text-[#6C47FF] mb-6">[ WHO WE ARE ]</p>
+            <p className="font-mono text-[11px] uppercase tracking-eyebrow text-[#6B6B6B] mb-6">[ WHO WE ARE ]</p>
             <blockquote
               className="font-display italic text-[#1D1D1F] leading-tight mb-8"
               style={{ fontSize: "clamp(28px,4vw,48px)" }}

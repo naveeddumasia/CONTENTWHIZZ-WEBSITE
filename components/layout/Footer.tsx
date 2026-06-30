@@ -28,7 +28,7 @@ export default function Footer() {
               <p className="font-mono text-[10px] uppercase tracking-eyebrow text-[#6E6E73] mb-3">Contact</p>
               <a href="tel:09016249312" className="block text-[13px] text-[#6E6E73] hover:text-[#1D1D1F] transition-colors mb-1.5">090162 49312</a>
               <a href="tel:09638280338" className="block text-[13px] text-[#6E6E73] hover:text-[#1D1D1F] transition-colors mb-1.5">096382 80338</a>
-              <a href="http://www.contentwhizz.in/" className="block text-[13px] text-[#6C47FF] hover:underline mb-1.5">contentwhizz.in</a>
+              <a href="http://www.contentwhizz.in/" className="block text-[13px] text-[#1D1D1F] hover:underline mb-1.5">contentwhizz.in</a>
               <p className="text-[13px] text-[#6E6E73]">Surat, Gujarat, India</p>
             </div>
             <div>
