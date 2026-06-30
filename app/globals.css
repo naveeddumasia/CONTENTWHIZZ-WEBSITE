@@ -1,77 +1,129 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0A0A0A;
-  --color-surface: #111111;
-  --color-border: #1F1F1F;
-  --color-text-primary: #F5F5F5;
-  --color-text-muted: #6B6B6B;
-  --color-accent: #FFFFFF;
-  --color-inverse-bg: #F5F5F5;
-  --color-inverse-text: #0A0A0A;
+  --color-bg: #F5F5F7;
+  --color-surface: #FFFFFF;
+  --color-glass: rgba(255,255,255,0.72);
+  --color-border: rgba(209,209,214,0.5);
+  --color-text-primary: #1D1D1F;
+  --color-text-muted: #6E6E73;
+  --color-accent: #6C47FF;
+  --color-accent-2: #00C2FF;
 
   --font-display: var(--font-playfair), serif;
   --font-sans: var(--font-dm-sans), sans-serif;
   --font-mono: var(--font-jetbrains), monospace;
 
-  --letter-spacing-eyebrow: 0.15em;
+  --letter-spacing-eyebrow: 0.12em;
 }
 
 * {
   cursor: none !important;
+  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light only;
+  background: #F5F5F7;
 }
 
 body {
-  background-color: #0A0A0A;
-  color: #F5F5F5;
+  background-color: #F5F5F7 !important;
+  color: #1D1D1F !important;
   overflow-x: hidden;
+  font-family: var(--font-dm-sans), sans-serif;
 }
 
-/* ── Grain texture ── */
-body::before {
+/* ── Ambient gradient orbs ── */
+body::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 9999;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 700px 500px at 80% 10%, rgba(108,71,255,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 400px at 10% 80%, rgba(0,194,255,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 300px at 50% 50%, rgba(255,180,100,0.04) 0%, transparent 70%);
 }
 
-/* ── Marquee / Ticker ── */
+/* ── Apple glass ── */
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid rgba(209, 209, 214, 0.5);
+}
+
+.glass-dark {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border: 1px solid rgba(255,255,255,0.8);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(209, 209, 214, 0.6);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+}
+
+/* ── Gradient text ── */
+.gradient-text {
+  background: linear-gradient(135deg, #6C47FF 0%, #00C2FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Marquee ── */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-
-.marquee-track {
-  animation: marquee 30s linear infinite;
-  will-change: transform;
-}
+.marquee-track { animation: marquee 35s linear infinite; }
 
 /* ── Rotating ring ── */
 @keyframes spin-ring {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
+.rotate-ring { animation: spin-ring 24s linear infinite; transform-origin: center; }
 
-.rotate-ring {
-  animation: spin-ring 20s linear infinite;
-  transform-origin: center;
+/* ── Typing cursor blink ── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
+.cursor-blink { animation: blink 0.9s step-end infinite; }
 
-/* ── Focus visible ── */
-:focus-visible {
-  outline: 2px solid #F5F5F5;
-  outline-offset: 3px;
+/* ── Floating cards ── */
+@keyframes float-a {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-12px) rotate(1deg); }
 }
+@keyframes float-b {
+  0%, 100% { transform: translateY(0px) rotate(2deg); }
+  50%       { transform: translateY(-8px) rotate(-1deg); }
+}
+@keyframes float-c {
+  0%, 100% { transform: translateY(0px) rotate(-0.5deg); }
+  50%       { transform: translateY(-16px) rotate(0.5deg); }
+}
+.float-a { animation: float-a 6s ease-in-out infinite; }
+.float-b { animation: float-b 7s ease-in-out infinite; }
+.float-c { animation: float-c 5s ease-in-out infinite; }
+
+/* ── Focus ── */
+:focus-visible { outline: 2px solid #6C47FF; outline-offset: 3px; }
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #0A0A0A; }
-::-webkit-scrollbar-thumb { background: #1F1F1F; border-radius: 2px; }
+::-webkit-scrollbar-track { background: #F5F5F7; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 2px; }
+
+/* ── Section utility ── */
+.section-pad { padding-top: 7rem; padding-bottom: 7rem; }

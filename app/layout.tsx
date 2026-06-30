@@ -24,9 +24,9 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LORE — We make brands worth reading.",
+  title: "ContentWhizz — We Create, You Grow.",
   description:
-    "Strategic content that builds authority, trust, and growth.",
+    "ContentWhizz is a premium content marketing agency based in Surat. Content writing, social media, graphics, video, and more.",
 };
 
 export default function RootLayout({
@@ -36,9 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${playfair.variable} ${dmSans.variable} ${jetbrains.variable} font-sans`}
-      >
+      <body className={`${playfair.variable} ${dmSans.variable} ${jetbrains.variable} font-sans`}>
         <SmoothScroll>
           <CustomCursor />
           {children}
