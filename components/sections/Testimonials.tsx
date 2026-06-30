@@ -4,9 +4,24 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const testimonials = [
-  { quote: "ContentWhizz transformed our blog into a lead-generation engine. The quality of writing is consistently outstanding — they truly understand our brand voice.", name: "Rahul Sharma", title: "Founder, E-Commerce Brand · Surat", emoji: "🛍️" },
-  { quote: "Their social media team is phenomenal. Within 3 months our engagement doubled and we were getting serious inbound inquiries directly from Instagram.", name: "Priya Mehta", title: "Marketing Head, Real Estate Firm · Ahmedabad", emoji: "🏢" },
-  { quote: "We needed content in both English and regional languages — ContentWhizz handled it flawlessly. Professional, fast, and always on brief.", name: "Aditya Patel", title: "CEO, D2C Startup · Mumbai", emoji: "🚀" },
+  {
+    quote: "ContentWhizz delivered exceptional quality without errors at very competitive pricing. I was impressed by how well they understood our brand voice from day one.",
+    name: "Aditya Pradhan",
+    title: "Founder, Grafiqey",
+    emoji: "🎨",
+  },
+  {
+    quote: "I highly recommend ContentWhizz for tech startups. Their ability to translate complex technical concepts into clear, engaging content is remarkable.",
+    name: "Vaghasiya Krunal",
+    title: "Marketing Lead, WiserNotify",
+    emoji: "🚀",
+  },
+  {
+    quote: "Excellent work across the board and an absolute pleasure to work with. ContentWhizz consistently exceeds expectations on every project.",
+    name: "Diana Ross",
+    title: "Editor, ContentPen",
+    emoji: "✍️",
+  },
 ];
 
 export default function Testimonials() {
@@ -16,7 +31,7 @@ export default function Testimonials() {
     <section className="section-pad">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-          className="font-mono text-[11px] uppercase tracking-eyebrow text-[#6B6B6B] mb-12">
+          className="font-mono text-[11px] uppercase tracking-eyebrow text-white/35 mb-12">
           [ CLIENT VOICES ]
         </motion.p>
 
@@ -25,11 +40,11 @@ export default function Testimonials() {
             <motion.div key={idx} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.4 }}>
               <div className="text-4xl mb-6">{testimonials[idx].emoji}</div>
-              <blockquote className="font-display italic text-[#0A0A0A] leading-snug max-w-3xl"
+              <blockquote className="font-display italic text-white leading-snug max-w-3xl"
                 style={{ fontSize: "clamp(18px,2.5vw,26px)" }}>
                 "{testimonials[idx].quote}"
               </blockquote>
-              <p className="font-mono text-[12px] text-[#6B6B6B] mt-6 tracking-eyebrow">
+              <p className="font-mono text-[12px] text-white/35 mt-6 tracking-eyebrow">
                 — {testimonials[idx].name}, {testimonials[idx].title}
               </p>
             </motion.div>
@@ -38,10 +53,10 @@ export default function Testimonials() {
           <div className="flex items-center gap-4 mt-10">
             {testimonials.map((_, i) => (
               <button key={i} onClick={() => setIdx(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${i === idx ? "w-8 bg-[#0A0A0A]" : "w-3 bg-black/10"}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${i === idx ? "w-8 bg-white" : "w-3 bg-white/15"}`}
                 aria-label={`Go to testimonial ${i + 1}`} />
             ))}
-            <span className="ml-auto font-mono text-[11px] text-[#6B6B6B]">
+            <span className="ml-auto font-mono text-[11px] text-white/25">
               {String(idx + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
             </span>
           </div>

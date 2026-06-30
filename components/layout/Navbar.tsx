@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "glass shadow-sm shadow-black/5" : "bg-transparent"}`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "glass border-b border-white/[0.06]" : "bg-transparent"}`}>
         <nav className="mx-auto max-w-[1400px] px-6 md:px-10 h-16 flex items-center justify-between" aria-label="Main navigation">
           <a href="#" aria-label="ContentWhizz home">
             <Logo className="h-9 w-auto" />
@@ -27,7 +27,7 @@ export default function Navbar() {
           <ul className="hidden md:flex items-center gap-8">
             {links.map((l) => (
               <li key={l}>
-                <a href={`#${l.toLowerCase()}`} className="text-[13px] text-[#6B6B6B] hover:text-[#0A0A0A] transition-colors duration-200 font-medium">
+                <a href={`#${l.toLowerCase()}`} className="text-[13px] text-white/50 hover:text-white transition-colors duration-200 font-medium">
                   {l}
                 </a>
               </li>
@@ -45,7 +45,7 @@ export default function Navbar() {
               aria-expanded={menuOpen}
             >
               {[0, 1, 2].map((i) => (
-                <span key={i} className={`block w-5 h-px bg-[#0A0A0A] transition-all duration-300 ${i === 0 && menuOpen ? "rotate-45 translate-y-[6px]" : i === 1 && menuOpen ? "opacity-0" : i === 2 && menuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
+                <span key={i} className={`block w-5 h-px bg-white transition-all duration-300 ${i === 0 && menuOpen ? "rotate-45 translate-y-[6px]" : i === 1 && menuOpen ? "opacity-0" : i === 2 && menuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
               ))}
             </button>
           </div>
@@ -57,14 +57,14 @@ export default function Navbar() {
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 glass flex flex-col justify-center items-center gap-8"
+            className="fixed inset-0 z-40 bg-[#080808]/95 backdrop-blur-2xl flex flex-col justify-center items-center gap-8"
           >
             {links.map((l, i) => (
               <motion.a
                 key={l} href={`#${l.toLowerCase()}`}
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08, duration: 0.4 }}
-                className="font-display italic text-[clamp(32px,8vw,52px)] text-[#0A0A0A]"
+                className="font-display italic text-[clamp(32px,8vw,52px)] text-white"
                 onClick={() => setMenuOpen(false)}
               >
                 {l}

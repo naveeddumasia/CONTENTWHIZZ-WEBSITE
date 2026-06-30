@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #FFFFFF;
-  --color-surface: #FFFFFF;
-  --color-border: rgba(0,0,0,0.06);
-  --color-text-primary: #0A0A0A;
-  --color-text-muted: #6B6B6B;
-  --color-accent: #0A0A0A;
+  --color-bg: #080808;
+  --color-surface: rgba(255,255,255,0.05);
+  --color-border: rgba(255,255,255,0.08);
+  --color-text-primary: #FFFFFF;
+  --color-text-muted: rgba(255,255,255,0.45);
+  --color-accent: #FFFFFF;
 
   --font-display: var(--font-playfair), serif;
   --font-sans: var(--font-dm-sans), sans-serif;
@@ -19,19 +19,16 @@
 
 html {
   scroll-behavior: auto;
-  color-scheme: light only;
-  background: #FFFFFF;
+  color-scheme: dark only;
+  background: #080808;
 }
 
 body {
-  background-color: #FFFFFF !important;
-  color: #0A0A0A !important;
+  background-color: #080808 !important;
+  color: #FFFFFF !important;
   overflow-x: hidden;
   font-family: var(--font-dm-sans), sans-serif;
 }
-
-/* Background blobs are handled by ParallaxBlobs.tsx (JS parallax).
-   body::before is kept only for the noise overlay via body::after. */
 
 /* Noise texture */
 body::after {
@@ -40,51 +37,41 @@ body::after {
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.022;
+  opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-size: 200px 200px;
 }
 
-/* All page content above the fixed backdrop */
-#__next, main, header, footer, section, [data-page-content] {
-  position: relative;
-  z-index: 1;
-}
-
-/* ── Glass styles ── */
+/* ── Glass (dark variant) ── */
 .glass {
-  background: rgba(255,255,255,0.58);
+  background: rgba(255,255,255,0.05);
   backdrop-filter: saturate(180%) blur(24px);
   -webkit-backdrop-filter: saturate(180%) blur(24px);
-  border: 1px solid rgba(255,255,255,0.88);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.09);
 }
 
 .glass-card {
-  background: rgba(255,255,255,0.68);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-  border: 1px solid rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
   box-shadow:
-    0 4px 28px rgba(0,0,0,0.07),
-    0 1px 6px rgba(0,0,0,0.04),
-    inset 0 1px 0 rgba(255,255,255,0.98);
+    0 4px 28px rgba(0,0,0,0.4),
+    0 1px 6px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.06);
 }
 
-.glass-dark {
-  background: rgba(8,8,8,0.86);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(255,255,255,0.07);
-  box-shadow:
-    0 8px 48px rgba(0,0,0,0.28),
-    0 2px 8px rgba(0,0,0,0.18),
-    inset 0 1px 0 rgba(255,255,255,0.05);
+.glass-light {
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
 }
 
-/* ── Ink gradient text ── */
+/* ── Gradient text ── */
 .gradient-text {
-  background: linear-gradient(135deg, #0A0A0A 0%, #555555 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, rgba(255,255,255,0.55) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -92,29 +79,27 @@ body::after {
 
 /* ── Buttons ── */
 .btn-black {
-  background: rgba(10,10,10,0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: #FFFFFF;
+  background: #FFFFFF;
+  color: #080808;
   transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 .btn-black:hover {
-  background: rgba(10,10,10,1);
+  background: rgba(255,255,255,0.90);
   transform: scale(1.03);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+  box-shadow: 0 8px 28px rgba(255,255,255,0.15);
 }
 
 .btn-outline {
-  background: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.06);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  color: #0A0A0A;
-  border: 1.5px solid rgba(0,0,0,0.14);
+  color: #FFFFFF;
+  border: 1px solid rgba(255,255,255,0.18);
   transition: border-color 0.2s, background 0.2s;
 }
 .btn-outline:hover {
-  border-color: rgba(0,0,0,0.4);
-  background: rgba(255,255,255,0.80);
+  border-color: rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.10);
 }
 
 /* ── Marquee ── */
@@ -133,27 +118,20 @@ body::after {
 
 /* ── Float animations ── */
 @keyframes float-a {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-12px); }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-14px) rotate(2deg); }
 }
 @keyframes float-b {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-8px); }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-9px) rotate(-1deg); }
 }
-@keyframes float-c {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-16px); }
-}
-.float-a { animation: float-a 6s ease-in-out infinite; }
-.float-b { animation: float-b 7s ease-in-out infinite; }
-.float-c { animation: float-c 5s ease-in-out infinite; }
+.float-a { animation: float-a 7s ease-in-out infinite; }
+.float-b { animation: float-b 9s ease-in-out infinite; }
 
-:focus-visible { outline: 2px solid #0A0A0A; outline-offset: 3px; }
+:focus-visible { outline: 2px solid rgba(255,255,255,0.6); outline-offset: 3px; }
 
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #FFFFFF; }
-::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 2px; }
+::-webkit-scrollbar-track { background: #080808; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 2px; }
 
-/* Section spacing — generous but no hard dividers */
 .section-pad { padding-top: 7rem; padding-bottom: 7rem; }
-.section-flow { padding-top: 5rem; padding-bottom: 5rem; }

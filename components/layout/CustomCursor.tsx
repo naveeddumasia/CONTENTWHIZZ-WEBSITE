@@ -8,15 +8,14 @@ export default function CustomCursor() {
   const y = useMotionValue(-100);
   const sx = useSpring(x, { stiffness: 500, damping: 40 });
   const sy = useSpring(y, { stiffness: 500, damping: 40 });
-  const hoverRef = useRef(false);
   const dotRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const move = (e: MouseEvent) => { x.set(e.clientX); y.set(e.clientY); };
     const over = (e: MouseEvent) => {
       const el = e.target as HTMLElement;
-      hoverRef.current = !!el.closest("a,button,[role=button],input,textarea,select,label");
-      if (dotRef.current) dotRef.current.dataset.hover = String(hoverRef.current);
+      const isHover = !!el.closest("a,button,[role=button],input,textarea,select,label");
+      if (dotRef.current) dotRef.current.dataset.hover = String(isHover);
     };
     window.addEventListener("mousemove", move);
     window.addEventListener("mouseover", over);
@@ -31,13 +30,8 @@ export default function CustomCursor() {
     >
       <motion.div
         className="rounded-full"
-        style={{
-          width: 12, height: 12,
-          background: "#0A0A0A",
-          mixBlendMode: "multiply",
-        }}
+        style={{ width: 12, height: 12, background: "#FFFFFF", mixBlendMode: "difference" }}
         whileHover={{ scale: 3.5 }}
-        data-hover-scale
       />
     </motion.div>
   );

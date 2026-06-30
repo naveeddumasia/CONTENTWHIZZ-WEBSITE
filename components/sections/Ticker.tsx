@@ -1,16 +1,16 @@
-const TEXT = "CONTENT WRITING · SOCIAL MEDIA · BRAND DESIGN · SEO CONTENT · VIDEO SCRIPTS · TRANSLATION · THOUGHT LEADERSHIP · GRAPHICS · ";
+const TEXT = "CONTENT WRITING · SOCIAL MEDIA · BRAND DESIGN · SEO CONTENT · VIDEO SCRIPTS · TRANSLATION · PRESS RELEASES · COPYWRITING · ";
 
 export default function Ticker() {
   const repeated = TEXT + TEXT;
   return (
     <div
-      className="w-full overflow-hidden h-[44px] flex items-center glass"
-      style={{ borderLeft: "none", borderRight: "none", borderRadius: 0 }}
+      className="w-full overflow-hidden h-[44px] flex items-center border-y border-white/[0.07]"
+      style={{ background: "rgba(255,255,255,0.02)" }}
       aria-label="Services ticker"
     >
       <div className="marquee-track whitespace-nowrap flex items-center">
         {[repeated, repeated].map((t, i) => (
-          <span key={i} className="font-mono text-[11px] uppercase text-[#0A0A0A]/50 tracking-widest">
+          <span key={i} className="font-mono text-[11px] uppercase text-white/30 tracking-widest">
             {t}
           </span>
         ))}
