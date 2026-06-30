@@ -8,7 +8,7 @@ export default function Logo({ className = "" }: { className?: string }) {
       width={1917}
       height={446}
       className={className}
-      style={{ filter: "invert(1)" }}
+      style={{ filter: "invert(1)", mixBlendMode: "screen" }}
       priority
     />
   );
