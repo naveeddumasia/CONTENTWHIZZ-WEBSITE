@@ -22,19 +22,20 @@ function Sparkle({ size = 220, className = "" }: { size?: number; className?: st
   return (
     <svg width={size} height={size} viewBox="0 0 220 220" fill="none" className={className} aria-hidden="true">
       <defs>
-        <radialGradient id="sg1" cx="30%" cy="25%" r="75%">
+        <linearGradient id="sg1" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="40%" stopColor="#d0d0d0" />
-          <stop offset="100%" stopColor="#383838" />
-        </radialGradient>
-        <radialGradient id="sg2" cx="30%" cy="25%" r="75%">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="50%" stopColor="#b8b8b8" />
-          <stop offset="100%" stopColor="#2a2a2a" />
-        </radialGradient>
+          <stop offset="55%" stopColor="#aeaeae" />
+          <stop offset="100%" stopColor="#4a4a4a" />
+        </linearGradient>
       </defs>
-      <path d="M110,6 C110,6 118,98 214,110 C118,122 110,214 110,214 C110,214 102,122 6,110 C102,98 110,6 110,6 Z" fill="url(#sg1)" />
-      <path d="M182,28 C182,28 186,62 220,66 C186,70 182,104 182,104 C182,104 178,70 144,66 C178,62 182,28 182,28 Z" fill="url(#sg2)" opacity="0.7" />
+      <path
+        d="M110,8
+           C110,66 152,108 210,110
+           C152,112 110,154 110,212
+           C110,154 68,112 10,110
+           C68,108 110,66 110,8 Z"
+        fill="url(#sg1)"
+      />
     </svg>
   );
 }
@@ -148,8 +149,6 @@ export default function Hero() {
             <div className="float-a">
               <Sparkle size={280} />
             </div>
-            <div className="absolute w-[320px] h-[320px] rounded-full"
-              style={{ background: "radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%)", filter: "blur(40px)" }} />
           </motion.div>
         </div>
       </div>
