@@ -1,10 +1,70 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Flag from "@/components/ui/Flag";
 
 const services = ["Content Writing", "Social Media", "Graphics & Design", "Film & Video", "Translation", "Other"];
+
+function ServiceSelect({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false); };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="w-full glass rounded-xl px-4 py-3 text-[14px] text-left flex items-center justify-between focus:outline-none focus:ring-1 focus:ring-white/20 transition-all"
+      >
+        <span className={value ? "text-white" : "text-white/25"}>{value || "Select a service…"}</span>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className={`text-white/40 transition-transform duration-200 flex-shrink-0 ${open ? "rotate-180" : ""}`}>
+          <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            initial={{ opacity: 0, y: -6, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.98 }}
+            transition={{ duration: 0.15 }}
+            className="absolute z-50 w-full mt-2 rounded-xl overflow-hidden"
+            style={{
+              background: "rgba(18,18,18,0.96)",
+              backdropFilter: "blur(24px)",
+              border: "1px solid rgba(255,255,255,0.10)",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.6)",
+            }}
+          >
+            {services.map((s) => (
+              <li key={s}>
+                <button
+                  type="button"
+                  onClick={() => { onChange(s); setOpen(false); }}
+                  className={`w-full text-left px-4 py-2.5 text-[14px] transition-colors duration-150
+                    ${value === s
+                      ? "text-white bg-white/10"
+                      : "text-white/60 hover:text-white hover:bg-white/[0.06]"
+                    }`}
+                >
+                  {s}
+                </button>
+              </li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -26,11 +86,10 @@ export default function Contact() {
             </p>
             <div className="space-y-5">
               {[
-                { icon: "📞", label: "Phone",    value: "+91 90162 49312",      href: "tel:09016249312",           flags: false },
+                { icon: "📞", label: "Phone",    value: "+91 90162 49312",      href: "tel:09016249312",             flags: false },
                 { icon: "✉️", label: "Email",    value: "info@contentwhizz.in", href: "mailto:info@contentwhizz.in", flags: false },
-                { icon: "🌐", label: "Website",  value: "contentwhizz.in",      href: "http://www.contentwhizz.in/", flags: false },
-                { icon: "📍", label: "Location", value: null,                   href: null,                        flags: true  },
-                { icon: "🕐", label: "Hours",    value: "Mon–Sat 10:00–19:00 IST", href: null,                    flags: false },
+                { icon: "📍", label: "Location", value: null,                   href: null,                          flags: true  },
+                { icon: "🕐", label: "Hours",    value: "Mon–Sat 10:00–19:00 IST", href: null,                      flags: false },
               ].map((c) => (
                 <div key={c.label} className="flex items-center gap-4">
                   <div className="glass w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0">{c.icon}</div>
@@ -99,11 +158,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <label className="font-mono text-[12px] uppercase tracking-eyebrow text-white/30 block mb-1.5">Service Needed</label>
-                    <select value={form.service} onChange={(e) => setForm({ ...form, service: e.target.value })}
-                      className={inputCls} style={{ colorScheme: "dark" }}>
-                      <option value="">Select a service…</option>
-                      {services.map((s) => <option key={s} value={s}>{s}</option>)}
-                    </select>
+                    <ServiceSelect value={form.service} onChange={(v) => setForm({ ...form, service: v })} />
                   </div>
                 </div>
                 <div>
