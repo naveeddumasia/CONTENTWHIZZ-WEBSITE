@@ -18,39 +18,44 @@ const BG_WORDS = [
   { text: "keywords",     x: "86%", y: "52%", size: 32, delay: 0.8  },
 ];
 
-function ContentStack({ size = 260, className = "" }: { size?: number; className?: string }) {
+function AbstractForm({ size = 320, className = "" }: { size?: number; className?: string }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 260 260" fill="none" className={className} aria-hidden="true">
+    <svg width={size} height={size} viewBox="0 0 320 320" fill="none" className={className} aria-hidden="true">
       <defs>
-        <linearGradient id="cs1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#2a2a2a" />
-          <stop offset="100%" stopColor="#161616" />
-        </linearGradient>
-        <linearGradient id="cs2" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#3a3a3a" />
-          <stop offset="100%" stopColor="#1c1c1c" />
-        </linearGradient>
-        <linearGradient id="cs3" x1="0%" y1="0%" x2="100%" y2="100%">
+        <radialGradient id="af1" cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
+          <stop offset="55%" stopColor="#9a9a9a" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="#2a2a2a" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="af2" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="100%" stopColor="#cfcfcf" />
+          <stop offset="100%" stopColor="#5a5a5a" />
+        </linearGradient>
+        <linearGradient id="af3" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#cfcfcf" />
+          <stop offset="100%" stopColor="#3a3a3a" />
         </linearGradient>
       </defs>
 
-      {/* back card */}
-      <rect x="58" y="20" width="146" height="186" rx="14" fill="url(#cs1)" stroke="rgba(255,255,255,0.08)" />
+      {/* soft ambient glow */}
+      <circle cx="160" cy="150" r="150" fill="url(#af1)" />
 
-      {/* middle card */}
-      <rect x="38" y="48" width="146" height="186" rx="14" fill="url(#cs2)" stroke="rgba(255,255,255,0.10)" />
+      {/* concentric rings */}
+      <circle cx="160" cy="160" r="118" stroke="rgba(255,255,255,0.14)" strokeWidth="1" />
+      <circle cx="160" cy="160" r="84" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
 
-      {/* front card */}
-      <rect x="16" y="76" width="146" height="186" rx="14" fill="url(#cs3)" />
-      <rect x="36" y="102" width="90" height="10" rx="5" fill="#1a1a1a" opacity="0.85" />
-      <rect x="36" y="126" width="106" height="7" rx="3.5" fill="#1a1a1a" opacity="0.35" />
-      <rect x="36" y="142" width="106" height="7" rx="3.5" fill="#1a1a1a" opacity="0.35" />
-      <rect x="36" y="158" width="74" height="7" rx="3.5" fill="#1a1a1a" opacity="0.35" />
-      <circle cx="46" cy="226" r="10" fill="#1a1a1a" opacity="0.85" />
-      <rect x="64" y="219" width="60" height="6" rx="3" fill="#1a1a1a" opacity="0.5" />
-      <rect x="64" y="231" width="40" height="6" rx="3" fill="#1a1a1a" opacity="0.3" />
+      {/* flowing stroke */}
+      <path
+        d="M48,190 C100,120 140,230 192,150 C220,108 250,128 268,96"
+        stroke="url(#af2)"
+        strokeWidth="6"
+        strokeLinecap="round"
+      />
+
+      {/* orbiting solid forms */}
+      <circle cx="208" cy="96" r="34" fill="url(#af3)" />
+      <circle cx="92" cy="206" r="16" fill="url(#af2)" opacity="0.85" />
+      <circle cx="252" cy="190" r="9" fill="#ffffff" opacity="0.6" />
     </svg>
   );
 }
@@ -162,7 +167,7 @@ export default function Hero() {
             className="hidden lg:flex items-center justify-center relative"
           >
             <div className="float-a">
-              <ContentStack size={280} />
+              <AbstractForm size={320} />
             </div>
           </motion.div>
         </div>
