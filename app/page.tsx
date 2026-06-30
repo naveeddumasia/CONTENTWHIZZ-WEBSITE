@@ -1,5 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ParallaxBlobs from "@/components/layout/ParallaxBlobs";
 import Hero from "@/components/sections/Hero";
 import Ticker from "@/components/sections/Ticker";
 import Services from "@/components/sections/Services";
@@ -13,8 +14,9 @@ import Contact from "@/components/sections/Contact";
 export default function Home() {
   return (
     <>
+      <ParallaxBlobs />
       <Navbar />
-      <main>
+      <main style={{ position: "relative", zIndex: 1 }}>
         <Hero />
         <Ticker />
         <Services />
