@@ -27,7 +27,6 @@ export default function Contact() {
             <div className="space-y-5">
               {[
                 { icon: "📞", label: "Phone",    value: "+91 90162 49312",      href: "tel:09016249312",           flags: false },
-                { icon: "📞", label: "WhatsApp", value: "+91 96382 80338",      href: "tel:09638280338",           flags: false },
                 { icon: "✉️", label: "Email",    value: "info@contentwhizz.in", href: "mailto:info@contentwhizz.in", flags: false },
                 { icon: "🌐", label: "Website",  value: "contentwhizz.in",      href: "http://www.contentwhizz.in/", flags: false },
                 { icon: "📍", label: "Location", value: null,                   href: null,                        flags: true  },

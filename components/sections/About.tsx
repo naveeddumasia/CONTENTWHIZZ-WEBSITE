@@ -3,12 +3,6 @@
 import { motion } from "framer-motion";
 import Flag from "@/components/ui/Flag";
 
-const team = [
-  { initials: "CW", name: "ContentWhizz", title: "Creative Direction" },
-  { initials: "CS", name: "Content Team",  title: "Senior Writers"    },
-  { initials: "DS", name: "Design Studio", title: "Visual Creators"   },
-];
-
 export default function About() {
   return (
     <section id="about" className="section-pad">
@@ -28,17 +22,6 @@ export default function About() {
               We're creators — a unison of professionals delivering unparalleled, super-crisp content. Our tagline <strong className="text-white">"We create, you grow"</strong> mirrors our fundamental commitment to your business growth.
             </p>
 
-            <div className="flex gap-5 mt-10">
-              {team.map((t) => (
-                <div key={t.name} className="flex flex-col items-center gap-2">
-                  <div className="w-14 h-14 rounded-full glass-light flex items-center justify-center border border-white/10">
-                    <span className="font-mono text-[12px] text-white font-bold">{t.initials}</span>
-                  </div>
-                  <p className="font-mono text-[12px] uppercase tracking-eyebrow text-white/60 text-center">{t.name}</p>
-                  <p className="font-mono text-[12px] text-white/30 text-center">{t.title}</p>
-                </div>
-              ))}
-            </div>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
