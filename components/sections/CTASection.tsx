@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Flag from "@/components/ui/Flag";
 
 export default function CTASection() {
   return (
@@ -54,7 +55,7 @@ export default function CTASection() {
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
             viewport={{ once: true }} transition={{ delay: 0.45 }}
             className="mt-8 font-mono text-[12px] text-white/20">
-            Mon–Sat 10:00–19:00 IST · info@contentwhizz.in · 🇮🇳 India · 🇦🇪 Dubai · 🇬🇧 UK
+            Mon–Sat 10:00–19:00 IST · info@contentwhizz.in · <Flag country="in" /> India · <Flag country="ae" /> Dubai · <Flag country="gb" /> UK
           </motion.p>
         </motion.div>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Flag from "@/components/ui/Flag";
 
 const team = [
   { initials: "CW", name: "ContentWhizz", title: "Creative Direction" },
@@ -21,7 +22,7 @@ export default function About() {
               "Cheers to quality content."
             </blockquote>
             <p className="text-[15px] text-white/45 leading-relaxed mb-6">
-              ContentWhizz is a premium content writing service with clients across <strong className="text-white">🇮🇳 India, 🇦🇪 Dubai and 🇬🇧 UK</strong>. Our team carries <strong className="text-white">15+ years of combined expertise</strong> in writing, publishing, design and strategy — serving businesses globally.
+              ContentWhizz is a premium content writing service with clients across <strong className="text-white inline-flex items-center gap-1.5"><Flag country="in" /> India, <Flag country="ae" /> Dubai and <Flag country="gb" /> UK</strong>. Our team carries <strong className="text-white">15+ years of combined expertise</strong> in writing, publishing, design and strategy — serving businesses globally.
             </p>
             <p className="text-[15px] text-white/45 leading-relaxed">
               We're creators — a unison of professionals delivering unparalleled, super-crisp content. Our tagline <strong className="text-white">"We create, you grow"</strong> mirrors our fundamental commitment to your business growth.
@@ -64,7 +65,7 @@ export default function About() {
               </div>
               <div>
                 <p className="font-mono text-[12px] uppercase tracking-eyebrow text-white/30">Location</p>
-                <p className="text-[14px] font-semibold text-white mt-1">🇮🇳 India · 🇦🇪 Dubai · 🇬🇧 UK</p>
+                <p className="text-[14px] font-semibold text-white mt-1 flex items-center gap-1.5"><Flag country="in" /> India · <Flag country="ae" /> Dubai · <Flag country="gb" /> UK</p>
               </div>
               <div>
                 <p className="font-mono text-[12px] uppercase tracking-eyebrow text-white/30">Service Area</p>

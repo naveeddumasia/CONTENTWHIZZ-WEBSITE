@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Flag from "@/components/ui/Flag";
 
 const services = ["Content Writing", "Social Media", "Graphics & Design", "Film & Video", "Translation", "Other"];
 
@@ -25,18 +26,22 @@ export default function Contact() {
             </p>
             <div className="space-y-5">
               {[
-                { icon: "📞", label: "Phone",    value: "+91 90162 49312",      href: "tel:09016249312" },
-                { icon: "📞", label: "WhatsApp", value: "+91 96382 80338",      href: "tel:09638280338" },
-                { icon: "✉️", label: "Email",    value: "info@contentwhizz.in", href: "mailto:info@contentwhizz.in" },
-                { icon: "🌐", label: "Website",  value: "contentwhizz.in",      href: "http://www.contentwhizz.in/" },
-                { icon: "📍", label: "Location", value: "🇮🇳 India  ·  🇦🇪 Dubai  ·  🇬🇧 UK", href: null },
-                { icon: "🕐", label: "Hours",    value: "Mon–Sat 10:00–19:00 IST", href: null },
+                { icon: "📞", label: "Phone",    value: "+91 90162 49312",      href: "tel:09016249312",           flags: false },
+                { icon: "📞", label: "WhatsApp", value: "+91 96382 80338",      href: "tel:09638280338",           flags: false },
+                { icon: "✉️", label: "Email",    value: "info@contentwhizz.in", href: "mailto:info@contentwhizz.in", flags: false },
+                { icon: "🌐", label: "Website",  value: "contentwhizz.in",      href: "http://www.contentwhizz.in/", flags: false },
+                { icon: "📍", label: "Location", value: null,                   href: null,                        flags: true  },
+                { icon: "🕐", label: "Hours",    value: "Mon–Sat 10:00–19:00 IST", href: null,                    flags: false },
               ].map((c) => (
                 <div key={c.label} className="flex items-center gap-4">
                   <div className="glass w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0">{c.icon}</div>
                   <div>
                     <p className="font-mono text-[12px] uppercase tracking-eyebrow text-white/30">{c.label}</p>
-                    {c.href ? (
+                    {c.flags ? (
+                      <p className="text-[14px] font-semibold text-white flex items-center gap-1.5">
+                        <Flag country="in" /> India <span className="text-white/30">·</span> <Flag country="ae" /> Dubai <span className="text-white/30">·</span> <Flag country="gb" /> UK
+                      </p>
+                    ) : c.href ? (
                       <a href={c.href} className="text-[14px] font-semibold text-white hover:text-white/70 transition-colors">{c.value}</a>
                     ) : (
                       <p className="text-[14px] font-semibold text-white">{c.value}</p>

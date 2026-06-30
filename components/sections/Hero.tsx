@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Flag from "@/components/ui/Flag";
 
 const TYPED_WORDS = ["Content Writing", "Brand Storytelling", "SEO Articles", "Social Media", "Video Scripts", "Press Releases"];
 
@@ -89,7 +90,7 @@ export default function Hero() {
               className="font-mono text-[12px] uppercase tracking-[0.18em] text-white/40 mb-8 font-medium flex items-center gap-2"
             >
               <span className="w-5 h-px bg-white/30 inline-block" />
-              Premium Content Agency · Since 2016 · 🇮🇳 India · 🇦🇪 Dubai · 🇬🇧 UK
+              Premium Content Agency · Since 2016 · <Flag country="in" /> India · <Flag country="ae" /> Dubai · <Flag country="gb" /> UK
             </motion.p>
 
             <motion.h1
@@ -143,13 +144,19 @@ export default function Hero() {
               {[
                 { icon: "🏆", text: "8+ Years Experience" },
                 { icon: "🤝", text: "500+ Happy Clients" },
-                { icon: "📍", text: "India · Dubai · UK" },
                 { icon: "🕐", text: "Mon–Sat 10–7 PM" },
               ].map((b) => (
                 <span key={b.text} className="glass px-4 py-2 rounded-full text-[12px] text-white/50 font-medium flex items-center gap-1.5">
                   {b.icon} {b.text}
                 </span>
               ))}
+              <span className="glass px-4 py-2 rounded-full text-[12px] text-white/50 font-medium flex items-center gap-2">
+                <Flag country="in" /> India
+                <span className="text-white/20">·</span>
+                <Flag country="ae" /> Dubai
+                <span className="text-white/20">·</span>
+                <Flag country="gb" /> UK
+              </span>
             </motion.div>
           </div>
 

@@ -1,4 +1,5 @@
 import Logo from "./Logo";
+import Flag from "@/components/ui/Flag";
 
 export default function Footer() {
   return (
@@ -9,7 +10,9 @@ export default function Footer() {
           <div>
             <Logo className="h-7 w-auto mb-3" />
             <p className="text-[12px] text-white/35 max-w-xs leading-relaxed">
-              Premium content marketing agency.<br />🇮🇳 India · 🇦🇪 Dubai · 🇬🇧 UK<br />We create, you grow.
+              Premium content marketing agency.<br />
+              <span className="inline-flex items-center gap-1.5 mt-1"><Flag country="in" /> India · <Flag country="ae" /> Dubai · <Flag country="gb" /> UK</span><br />
+              We create, you grow.
             </p>
             <p className="text-[12px] text-white/20 mt-3">
               © {new Date().getFullYear()} ContentWhizz. All rights reserved.
