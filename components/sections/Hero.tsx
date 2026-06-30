@@ -18,24 +18,39 @@ const BG_WORDS = [
   { text: "keywords",     x: "86%", y: "52%", size: 32, delay: 0.8  },
 ];
 
-function Sparkle({ size = 220, className = "" }: { size?: number; className?: string }) {
+function ContentStack({ size = 260, className = "" }: { size?: number; className?: string }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 220 220" fill="none" className={className} aria-hidden="true">
+    <svg width={size} height={size} viewBox="0 0 260 260" fill="none" className={className} aria-hidden="true">
       <defs>
-        <linearGradient id="sg1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id="cs1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#2a2a2a" />
+          <stop offset="100%" stopColor="#161616" />
+        </linearGradient>
+        <linearGradient id="cs2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#3a3a3a" />
+          <stop offset="100%" stopColor="#1c1c1c" />
+        </linearGradient>
+        <linearGradient id="cs3" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="55%" stopColor="#aeaeae" />
-          <stop offset="100%" stopColor="#4a4a4a" />
+          <stop offset="100%" stopColor="#cfcfcf" />
         </linearGradient>
       </defs>
-      <path
-        d="M110,8
-           C110,66 152,108 210,110
-           C152,112 110,154 110,212
-           C110,154 68,112 10,110
-           C68,108 110,66 110,8 Z"
-        fill="url(#sg1)"
-      />
+
+      {/* back card */}
+      <rect x="58" y="20" width="146" height="186" rx="14" fill="url(#cs1)" stroke="rgba(255,255,255,0.08)" />
+
+      {/* middle card */}
+      <rect x="38" y="48" width="146" height="186" rx="14" fill="url(#cs2)" stroke="rgba(255,255,255,0.10)" />
+
+      {/* front card */}
+      <rect x="16" y="76" width="146" height="186" rx="14" fill="url(#cs3)" />
+      <rect x="36" y="102" width="90" height="10" rx="5" fill="#1a1a1a" opacity="0.85" />
+      <rect x="36" y="126" width="106" height="7" rx="3.5" fill="#1a1a1a" opacity="0.35" />
+      <rect x="36" y="142" width="106" height="7" rx="3.5" fill="#1a1a1a" opacity="0.35" />
+      <rect x="36" y="158" width="74" height="7" rx="3.5" fill="#1a1a1a" opacity="0.35" />
+      <circle cx="46" cy="226" r="10" fill="#1a1a1a" opacity="0.85" />
+      <rect x="64" y="219" width="60" height="6" rx="3" fill="#1a1a1a" opacity="0.5" />
+      <rect x="64" y="231" width="40" height="6" rx="3" fill="#1a1a1a" opacity="0.3" />
     </svg>
   );
 }
@@ -147,7 +162,7 @@ export default function Hero() {
             className="hidden lg:flex items-center justify-center relative"
           >
             <div className="float-a">
-              <Sparkle size={280} />
+              <ContentStack size={280} />
             </div>
           </motion.div>
         </div>
