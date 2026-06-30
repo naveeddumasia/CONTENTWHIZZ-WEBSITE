@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-10">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
-            <Logo className="h-7 w-auto text-[#1D1D1F] mb-3" />
+            <Logo className="h-8 w-auto mb-3" />
             <p className="text-[12px] text-[#6E6E73] max-w-xs leading-relaxed">
               Premium content marketing agency based in Surat, India. We create, you grow.
             </p>

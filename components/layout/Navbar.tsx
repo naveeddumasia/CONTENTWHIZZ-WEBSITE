@@ -21,7 +21,7 @@ export default function Navbar() {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "glass shadow-sm shadow-black/5" : "bg-transparent"}`}>
         <nav className="mx-auto max-w-[1400px] px-6 md:px-10 h-16 flex items-center justify-between" aria-label="Main navigation">
           <a href="#" aria-label="ContentWhizz home">
-            <Logo className="h-8 w-auto text-[#0A0A0A]" />
+            <Logo className="h-9 w-auto" />
           </a>
 
           <ul className="hidden md:flex items-center gap-8">
