@@ -58,11 +58,6 @@ export default function Hero() {
             {w.text}
           </motion.span>
         ))}
-        {/* Subtle warm orbs */}
-        <div className="absolute top-[-100px] right-[-80px] w-[560px] h-[560px] rounded-full pointer-events-none"
-          style={{ background: "radial-gradient(circle, rgba(0,0,0,0.03) 0%, transparent 70%)" }} />
-        <div className="absolute bottom-[-60px] left-[-60px] w-[420px] h-[420px] rounded-full pointer-events-none"
-          style={{ background: "radial-gradient(circle, rgba(0,0,0,0.025) 0%, transparent 70%)" }} />
       </div>
 
       {/* Content */}
