@@ -136,28 +136,6 @@ export default function Hero() {
               </a>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-              transition={{ delay: 0.9, duration: 0.6 }}
-              className="mt-12 flex flex-wrap gap-3"
-            >
-              {[
-                { icon: "🏆", text: "8+ Years Experience" },
-                { icon: "🤝", text: "500+ Happy Clients" },
-                { icon: "🕐", text: "Mon–Sat 10–7 PM" },
-              ].map((b) => (
-                <span key={b.text} className="glass px-4 py-2 rounded-full text-[12px] text-white/50 font-medium flex items-center gap-1.5">
-                  {b.icon} {b.text}
-                </span>
-              ))}
-              <span className="glass px-4 py-2 rounded-full text-[12px] text-white/50 font-medium flex items-center gap-2">
-                <Flag country="in" /> India
-                <span className="text-white/20">·</span>
-                <Flag country="ae" /> Dubai
-                <span className="text-white/20">·</span>
-                <Flag country="gb" /> UK
-              </span>
-            </motion.div>
           </div>
 
           {/* Right — decorative sparkle */}
