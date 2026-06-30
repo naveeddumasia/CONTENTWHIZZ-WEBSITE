@@ -66,11 +66,35 @@ function ServiceSelect({ value, onChange }: { value: string; onChange: (v: strin
   );
 }
 
+const FORMSPREE = "https://formspree.io/f/mlgywqwo";
+
 export default function Contact() {
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
 
   const inputCls = "w-full glass rounded-xl px-4 py-3 text-[14px] text-white placeholder-white/25 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all bg-transparent";
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSubmitting(true);
+    try {
+      const res = await fetch(FORMSPREE, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          service: form.service,
+          message: form.message,
+        }),
+      });
+      if (res.ok) setSent(true);
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   return (
     <section id="contact" className="section-pad">
@@ -136,7 +160,7 @@ export default function Contact() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <h3 className="h-display text-[22px] text-white mb-6">Send us a message</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
@@ -167,8 +191,8 @@ export default function Contact() {
                     value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
                     className={`${inputCls} resize-none`} />
                 </div>
-                <button type="submit" className="w-full py-3.5 rounded-xl text-[14px] font-semibold btn-black">
-                  Send Message →
+                <button type="submit" disabled={submitting} className="w-full py-3.5 rounded-xl text-[14px] font-semibold btn-black disabled:opacity-50 disabled:cursor-not-allowed">
+                  {submitting ? "Sending…" : "Send Message →"}
                 </button>
               </form>
             )}
