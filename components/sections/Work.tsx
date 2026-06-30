@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import CaseStudyCard from "@/components/ui/CaseStudyCard";
 
 const cases = [
-  { num: "01", client: "E-COMMERCE BRAND",  title: "From zero to 80K monthly readers with content-led SEO",         tag: "Content + SEO"  },
-  { num: "02", client: "REAL ESTATE FIRM",   title: "Social media strategy that drove 3× lead generation",            tag: "Social Media"   },
-  { num: "03", client: "D2C STARTUP",        title: "Brand storytelling that built trust and boosted conversions",    tag: "Brand Content"  },
+  { num: "01", client: "E-COMMERCE BRAND",  title: "From zero to 80K monthly readers with content-led SEO",         tag: "Content + SEO",  image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80&auto=format&fit=crop" },
+  { num: "02", client: "REAL ESTATE FIRM",   title: "Social media strategy that drove 3× lead generation",            tag: "Social Media",   image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=900&q=80&auto=format&fit=crop" },
+  { num: "03", client: "D2C STARTUP",        title: "Brand storytelling that built trust and boosted conversions",    tag: "Brand Content",  image: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=900&q=80&auto=format&fit=crop" },
 ];
 
 export default function Work() {

@@ -2,25 +2,26 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const testimonials = [
   {
     quote: "ContentWhizz delivered exceptional quality without errors at very competitive pricing. I was impressed by how well they understood our brand voice from day one.",
     name: "Aditya Pradhan",
     title: "Founder, Grafiqey",
-    emoji: "🎨",
+    avatar: "https://i.pravatar.cc/150?img=12",
   },
   {
     quote: "I highly recommend ContentWhizz for tech startups. Their ability to translate complex technical concepts into clear, engaging content is remarkable.",
     name: "Vaghasiya Krunal",
     title: "Marketing Lead, WiserNotify",
-    emoji: "🚀",
+    avatar: "https://i.pravatar.cc/150?img=33",
   },
   {
     quote: "Excellent work across the board and an absolute pleasure to work with. ContentWhizz consistently exceeds expectations on every project.",
     name: "Diana Ross",
     title: "Editor, ContentPen",
-    emoji: "✍️",
+    avatar: "https://i.pravatar.cc/150?img=47",
   },
 ];
 
@@ -39,7 +40,9 @@ export default function Testimonials() {
           <AnimatePresence mode="wait">
             <motion.div key={idx} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.4 }}>
-              <div className="text-4xl mb-6">{testimonials[idx].emoji}</div>
+              <div className="relative w-14 h-14 rounded-full overflow-hidden mb-6 glass">
+                <Image src={testimonials[idx].avatar} alt={testimonials[idx].name} fill className="object-cover grayscale" sizes="56px" />
+              </div>
               <blockquote className="h-display text-white max-w-3xl"
                 style={{ fontSize: "clamp(18px,2.5vw,28px)", lineHeight: 1.15 }}>
                 "{testimonials[idx].quote}"

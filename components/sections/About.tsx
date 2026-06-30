@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Flag from "@/components/ui/Flag";
 
 export default function About() {
@@ -25,8 +26,18 @@ export default function About() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }} transition={{ delay: 0.2, duration: 0.7 }}
-            className="glass-card rounded-3xl p-8 md:p-10 space-y-5">
+            viewport={{ once: true }} transition={{ delay: 0.2, duration: 0.7 }}>
+            <div className="relative w-full h-[220px] rounded-3xl overflow-hidden glass-card mb-6">
+              <Image
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1000&q=80&auto=format&fit=crop"
+                alt="ContentWhizz team collaborating"
+                fill
+                className="object-cover grayscale contrast-125"
+                sizes="600px"
+              />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(10,10,10,0.1) 0%, rgba(10,10,10,0.55) 100%)" }} />
+            </div>
+            <div className="glass-card rounded-3xl p-8 md:p-10 space-y-5">
             {[
               ["Total Content Solution", "From strategy to execution — blogs, social, video scripts, translation, press releases and design under one roof."],
               ["Quality Guaranteed", "Every piece of content is reviewed for accuracy, originality and brand alignment before delivery."],
@@ -54,6 +65,7 @@ export default function About() {
                 <p className="font-mono text-[12px] uppercase tracking-eyebrow text-white/30">Service Area</p>
                 <p className="text-[14px] font-semibold text-white mt-1">India & Global (Remote)</p>
               </div>
+            </div>
             </div>
           </motion.div>
         </div>

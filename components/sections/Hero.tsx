@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 import Flag from "@/components/ui/Flag";
 
 const TYPED_WORDS = ["Content Writing", "Brand Storytelling", "SEO Articles", "Social Media", "Video Scripts", "Press Releases"];
@@ -18,83 +19,7 @@ const BG_WORDS = [
   { text: "keywords",     x: "86%", y: "52%", size: 32, delay: 0.8  },
 ];
 
-/* Abstract form A — orbiting ideas/reach */
-function FormIdeas({ size = 320, className = "" }: { size?: number; className?: string }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 320 320" fill="none" className={className} aria-hidden="true">
-      <defs>
-        <radialGradient id="af1" cx="35%" cy="30%" r="70%">
-          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
-          <stop offset="55%" stopColor="#9a9a9a" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#2a2a2a" stopOpacity="0" />
-        </radialGradient>
-        <linearGradient id="af2" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="100%" stopColor="#5a5a5a" />
-        </linearGradient>
-        <linearGradient id="af3" x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#cfcfcf" />
-          <stop offset="100%" stopColor="#3a3a3a" />
-        </linearGradient>
-      </defs>
-
-      <circle cx="160" cy="150" r="150" fill="url(#af1)" />
-      <circle cx="160" cy="160" r="118" stroke="rgba(255,255,255,0.14)" strokeWidth="1" />
-      <circle cx="160" cy="160" r="84" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
-      <path
-        d="M48,190 C100,120 140,230 192,150 C220,108 250,128 268,96"
-        stroke="url(#af2)"
-        strokeWidth="6"
-        strokeLinecap="round"
-      />
-      <circle cx="208" cy="96" r="34" fill="url(#af3)" />
-      <circle cx="92" cy="206" r="16" fill="url(#af2)" opacity="0.85" />
-      <circle cx="252" cy="190" r="9" fill="#ffffff" opacity="0.6" />
-    </svg>
-  );
-}
-
-/* Abstract form B — target / growth (audience reached, results delivered) */
-function FormTarget({ size = 320, className = "" }: { size?: number; className?: string }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 320 320" fill="none" className={className} aria-hidden="true">
-      <defs>
-        <radialGradient id="tg1" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.85" />
-          <stop offset="60%" stopColor="#8a8a8a" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#2a2a2a" stopOpacity="0" />
-        </radialGradient>
-        <linearGradient id="tg2" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="100%" stopColor="#6a6a6a" />
-        </linearGradient>
-      </defs>
-
-      <circle cx="160" cy="160" r="150" fill="url(#tg1)" />
-      <circle cx="160" cy="160" r="120" stroke="rgba(255,255,255,0.16)" strokeWidth="1.5" />
-      <circle cx="160" cy="160" r="82" stroke="rgba(255,255,255,0.22)" strokeWidth="1.5" />
-      <circle cx="160" cy="160" r="44" fill="url(#tg2)" opacity="0.9" />
-      <circle cx="160" cy="160" r="10" fill="#ffffff" />
-
-      {/* arrow striking the center */}
-      <path d="M268,52 L180,140" stroke="url(#tg2)" strokeWidth="6" strokeLinecap="round" />
-      <path d="M268,52 L236,58 M268,52 L262,84" stroke="url(#tg2)" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 export default function Hero() {
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-
-  const opacityIdeas = useTransform(scrollYProgress, [0, 0.4, 0.6], [1, 1, 0]);
-  const scaleIdeas = useTransform(scrollYProgress, [0, 1], [1, 0.7]);
-  const rotateIdeas = useTransform(scrollYProgress, [0, 1], [0, -50]);
-
-  const opacityTarget = useTransform(scrollYProgress, [0.4, 0.6, 1], [0, 1, 1]);
-  const scaleTarget = useTransform(scrollYProgress, [0.4, 1], [0.7, 1]);
-  const rotateTarget = useTransform(scrollYProgress, [0.4, 1], [40, 0]);
-
   const [wordIdx, setWordIdx] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [deleting, setDeleting] = useState(false);
@@ -116,7 +41,7 @@ export default function Hero() {
   }, [displayed, deleting, wordIdx]);
 
   return (
-    <section ref={heroRef} className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16" aria-label="Hero">
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16" aria-label="Hero">
       {/* Ghost background words */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none" aria-hidden="true">
         {BG_WORDS.map((w) => (
@@ -193,24 +118,43 @@ export default function Hero() {
 
           </div>
 
-          {/* Right — scroll-morphing abstract form */}
+          {/* Right — editorial photo with floating stat chips */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 1, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
-            className="hidden lg:flex items-center justify-center relative h-[380px]"
+            className="hidden lg:flex items-center justify-center relative h-[460px]"
           >
+            <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[2rem] overflow-hidden glass-card">
+              <Image
+                src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&q=80&auto=format&fit=crop"
+                alt="Writer crafting content at a desk"
+                fill
+                priority
+                className="object-cover grayscale contrast-125"
+                sizes="420px"
+              />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(10,10,10,0) 40%, rgba(10,10,10,0.65) 100%)" }} />
+            </div>
+
+            {/* Floating stat chip — top left */}
             <motion.div
-              className="float-a absolute inset-0 flex items-center justify-center"
-              style={{ opacity: opacityIdeas, scale: scaleIdeas, rotate: rotateIdeas }}
+              animate={{ y: [0, -10, 0] }}
+              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+              className="absolute -top-2 -left-4 glass-card rounded-2xl px-5 py-4"
             >
-              <FormIdeas size={320} />
+              <p className="text-[22px] font-bold text-white leading-none">1,200+</p>
+              <p className="font-mono text-[10px] uppercase tracking-eyebrow text-white/40 mt-1">Articles Delivered</p>
             </motion.div>
+
+            {/* Floating stat chip — bottom right */}
             <motion.div
-              className="absolute inset-0 flex items-center justify-center"
-              style={{ opacity: opacityTarget, scale: scaleTarget, rotate: rotateTarget }}
+              animate={{ y: [0, 10, 0] }}
+              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 0.5 }}
+              className="absolute -bottom-4 -right-4 glass-card rounded-2xl px-5 py-4"
             >
-              <FormTarget size={320} />
+              <p className="text-[22px] font-bold text-white leading-none">98%</p>
+              <p className="font-mono text-[10px] uppercase tracking-eyebrow text-white/40 mt-1">Client Satisfaction</p>
             </motion.div>
           </motion.div>
         </div>
