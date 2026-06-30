@@ -9,24 +9,23 @@ export default function CTASection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.8 }}
-          className="glass-light rounded-3xl px-10 py-20 md:px-20 md:py-28 text-center relative overflow-hidden">
+          className="glass-light rounded-3xl px-10 py-20 md:px-20 md:py-24 text-center relative overflow-hidden">
 
-          {/* Inner radial glow */}
           <div className="absolute inset-0 rounded-3xl pointer-events-none"
             style={{ background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,0.06) 0%, transparent 65%)" }} />
           <div className="absolute inset-0 rounded-3xl pointer-events-none"
             style={{ background: "radial-gradient(ellipse 50% 40% at 80% 100%, rgba(255,255,255,0.03) 0%, transparent 60%)" }} />
 
           <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-            className="font-mono text-[11px] uppercase tracking-eyebrow text-white/35 mb-6">
+            className="font-mono text-[12px] uppercase tracking-eyebrow text-white/35 mb-6">
             [ READY TO GROW? ]
           </motion.p>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.7 }}
-            className="font-display italic text-white leading-tight mb-6"
-            style={{ fontSize: "clamp(32px,6vw,82px)" }}>
+            className="h-display text-white mb-6"
+            style={{ fontSize: "clamp(36px,6vw,88px)" }}>
             Content is your<br />biggest asset.
           </motion.h2>
 
@@ -54,7 +53,7 @@ export default function CTASection() {
           <motion.p
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
             viewport={{ once: true }} transition={{ delay: 0.45 }}
-            className="mt-10 font-mono text-[12px] text-white/20">
+            className="mt-8 font-mono text-[12px] text-white/20">
             Mon–Sat 10:00–19:00 IST · info@contentwhizz.in · Surat, Gujarat, India
           </motion.p>
         </motion.div>

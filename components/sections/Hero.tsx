@@ -32,9 +32,7 @@ function Sparkle({ size = 220, className = "" }: { size?: number; className?: st
           <stop offset="100%" stopColor="#2a2a2a" />
         </radialGradient>
       </defs>
-      {/* Main 4-point star */}
       <path d="M110,6 C110,6 118,98 214,110 C118,122 110,214 110,214 C110,214 102,122 6,110 C102,98 110,6 110,6 Z" fill="url(#sg1)" />
-      {/* Small satellite star */}
       <path d="M182,28 C182,28 186,62 220,66 C186,70 182,104 182,104 C182,104 178,70 144,66 C178,62 182,28 182,28 Z" fill="url(#sg2)" opacity="0.7" />
     </svg>
   );
@@ -68,7 +66,7 @@ export default function Hero() {
         {BG_WORDS.map((w) => (
           <motion.span
             key={w.text}
-            className="absolute font-display italic font-bold"
+            className="absolute h-display"
             style={{ left: w.x, top: w.y, fontSize: w.size, color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.06)" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, y: [0, -10, 0] }}
@@ -88,7 +86,7 @@ export default function Hero() {
           <div>
             <motion.p
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-              className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/40 mb-8 font-medium flex items-center gap-2"
+              className="font-mono text-[12px] uppercase tracking-[0.18em] text-white/40 mb-8 font-medium flex items-center gap-2"
             >
               <span className="w-5 h-px bg-white/30 inline-block" />
               Premium Content Agency · Since 2016 · Surat, India
@@ -97,7 +95,7 @@ export default function Hero() {
             <motion.h1
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
-              className="font-display leading-[1.0] tracking-[-0.02em] text-white"
+              className="h-display text-white"
               style={{ fontSize: "clamp(44px, 7.5vw, 108px)" }}
             >
               Content Writing<br />
@@ -165,7 +163,6 @@ export default function Hero() {
             <div className="float-a">
               <Sparkle size={280} />
             </div>
-            {/* Glow behind sparkle */}
             <div className="absolute w-[320px] h-[320px] rounded-full"
               style={{ background: "radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%)", filter: "blur(40px)" }} />
           </motion.div>
@@ -177,7 +174,7 @@ export default function Hero() {
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 0.6 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
-        <span className="font-mono text-[10px] uppercase tracking-eyebrow text-white/30">Scroll</span>
+        <span className="font-mono text-[12px] uppercase tracking-eyebrow text-white/30">Scroll</span>
         <motion.div
           animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
           className="w-px h-8 rounded-full bg-white/20"

@@ -10,7 +10,7 @@ export default function Ticker() {
     >
       <div className="marquee-track whitespace-nowrap flex items-center">
         {[repeated, repeated].map((t, i) => (
-          <span key={i} className="font-mono text-[11px] uppercase text-white/30 tracking-widest">
+          <span key={i} className="font-mono text-[12px] uppercase text-white/30 tracking-widest">
             {t}
           </span>
         ))}

@@ -15,9 +15,9 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.7 }}>
-            <p className="font-mono text-[11px] uppercase tracking-eyebrow text-white/35 mb-6">[ WHO WE ARE ]</p>
-            <blockquote className="font-display italic text-white leading-tight mb-8"
-              style={{ fontSize: "clamp(28px,4vw,48px)" }}>
+            <p className="font-mono text-[12px] uppercase tracking-eyebrow text-white/35 mb-6">[ WHO WE ARE ]</p>
+            <blockquote className="h-display text-white mb-8"
+              style={{ fontSize: "clamp(32px,4vw,56px)" }}>
               "Cheers to quality content."
             </blockquote>
             <p className="text-[15px] text-white/45 leading-relaxed mb-6">
@@ -33,8 +33,8 @@ export default function About() {
                   <div className="w-14 h-14 rounded-full glass-light flex items-center justify-center border border-white/10">
                     <span className="font-mono text-[12px] text-white font-bold">{t.initials}</span>
                   </div>
-                  <p className="font-mono text-[10px] uppercase tracking-eyebrow text-white/60 text-center">{t.name}</p>
-                  <p className="font-mono text-[10px] text-white/30 text-center">{t.title}</p>
+                  <p className="font-mono text-[12px] uppercase tracking-eyebrow text-white/60 text-center">{t.name}</p>
+                  <p className="font-mono text-[12px] text-white/30 text-center">{t.title}</p>
                 </div>
               ))}
             </div>
@@ -59,15 +59,15 @@ export default function About() {
             ))}
             <div className="pt-2 flex flex-wrap gap-6">
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-eyebrow text-white/30">Founded</p>
+                <p className="font-mono text-[12px] uppercase tracking-eyebrow text-white/30">Founded</p>
                 <p className="text-[14px] font-semibold text-white mt-1">June 2016</p>
               </div>
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-eyebrow text-white/30">Location</p>
+                <p className="font-mono text-[12px] uppercase tracking-eyebrow text-white/30">Location</p>
                 <p className="text-[14px] font-semibold text-white mt-1">Surat, Gujarat, India</p>
               </div>
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-eyebrow text-white/30">Service Area</p>
+                <p className="font-mono text-[12px] uppercase tracking-eyebrow text-white/30">Service Area</p>
                 <p className="text-[14px] font-semibold text-white mt-1">India & Global (Remote)</p>
               </div>
             </div>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 
@@ -15,20 +15,21 @@ export default function CaseStudyCard({ num, client, title, tag, index }: Props)
 
       <div>
         <div className="flex items-center justify-between mb-4">
-          <span className="font-mono text-[11px] uppercase tracking-eyebrow text-white/35">{client}</span>
-          <span className="text-[11px] font-semibold px-3 py-1 rounded-full bg-white/8 text-white/60 border border-white/10">{tag}</span>
+          <span className="font-mono text-[12px] uppercase tracking-eyebrow text-white/35">{client}</span>
+          <span className="text-[12px] font-semibold px-3 py-1 rounded-full bg-white/8 text-white/60 border border-white/10">{tag}</span>
         </div>
         <p className="font-mono text-[36px] font-bold text-white/[0.05] leading-none select-none">{num}</p>
       </div>
 
       <div>
-        <h3 className="font-display italic text-[22px] md:text-[24px] text-white leading-snug mt-4">{title}</h3>
+        <h3 className="h-display text-[22px] md:text-[24px] text-white mt-4">{title}</h3>
         <motion.p initial={{ opacity: 0, x: -8 }} whileHover={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.2 }}
           className="mt-3 text-[13px] text-white/50 font-semibold">
-          View Case Study →
+          View Case Study â†’
         </motion.p>
       </div>
     </motion.article>
   );
 }
+

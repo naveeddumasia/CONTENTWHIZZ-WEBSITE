@@ -25,12 +25,12 @@ export default function Services() {
     <section id="services" className="section-pad">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-          className="font-mono text-[11px] uppercase tracking-eyebrow text-white/35 mb-4">
+          className="font-mono text-[12px] uppercase tracking-eyebrow text-white/35 mb-4">
           [ WHAT WE DO ]
         </motion.p>
         <motion.h2 initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
-          className="font-display italic text-white mb-14" style={{ fontSize: "clamp(32px,5vw,62px)" }}>
+          className="h-display text-white mb-10" style={{ fontSize: "clamp(36px,5vw,72px)" }}>
           Everything content.<br />Under one roof.
         </motion.h2>
 
@@ -45,7 +45,7 @@ export default function Services() {
                   <div className="flex items-center gap-4">
                     <span className="text-2xl">{s.icon}</span>
                     <div>
-                      <span className="font-mono text-[10px] text-white/30 tracking-eyebrow block">{s.num}</span>
+                      <span className="font-mono text-[12px] text-white/30 tracking-eyebrow block">{s.num}</span>
                       <span className="text-[16px] font-semibold text-white">{s.title}</span>
                     </div>
                   </div>
@@ -66,7 +66,7 @@ export default function Services() {
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             className="glass-card rounded-3xl p-8 md:p-10 sticky top-24 hidden lg:block">
-            <p className="font-mono text-[11px] uppercase tracking-eyebrow text-white/35 mb-6">WHY CONTENTWHIZZ</p>
+            <p className="font-mono text-[12px] uppercase tracking-eyebrow text-white/35 mb-6">WHY CONTENTWHIZZ</p>
             <div className="space-y-5">
               {why.map(([icon, title, desc]) => (
                 <div key={title as string} className="flex gap-4 items-start">

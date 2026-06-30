@@ -14,12 +14,12 @@ export default function Work() {
     <section id="work" className="section-pad">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-          className="font-mono text-[11px] uppercase tracking-eyebrow text-[#6B6B6B] mb-4">
+          className="font-mono text-[12px] uppercase tracking-eyebrow text-white/35 mb-4">
           [ SELECTED WORK ]
         </motion.p>
         <motion.h2 initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
-          className="font-display italic text-[#0A0A0A] mb-14" style={{ fontSize: "clamp(32px,5vw,62px)" }}>
+          className="h-display text-white mb-10" style={{ fontSize: "clamp(36px,5vw,72px)" }}>
           Content that moved<br />the needle.
         </motion.h2>
 
@@ -33,8 +33,8 @@ export default function Work() {
           ))}
         </div>
 
-        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }} className="mt-10">
-          <a href="#contact" className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#0A0A0A] hover:underline font-mono uppercase tracking-eyebrow">
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }} className="mt-8">
+          <a href="#contact" className="inline-flex items-center gap-2 text-[13px] font-semibold text-white/50 hover:text-white transition-colors font-mono uppercase tracking-eyebrow">
             Start Your Project →
           </a>
         </motion.div>
