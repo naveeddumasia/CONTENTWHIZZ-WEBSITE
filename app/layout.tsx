@@ -25,7 +25,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "ContentWhizz — We Create, You Grow.",
   description:
-    "ContentWhizz is a premium content marketing agency based in Surat. Content writing, social media, graphics, video, and more.",
+    "ContentWhizz is a premium content marketing agency serving India, Dubai and UK. Content writing, social media, graphics, video, and more.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

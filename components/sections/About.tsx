@@ -21,7 +21,7 @@ export default function About() {
               "Cheers to quality content."
             </blockquote>
             <p className="text-[15px] text-white/45 leading-relaxed mb-6">
-              ContentWhizz is a premium content writing service based in <strong className="text-white">Surat, Gujarat</strong>. Our team carries <strong className="text-white">15+ years of combined expertise</strong> in writing, publishing, design and strategy — serving businesses across India and globally.
+              ContentWhizz is a premium content writing service with clients across <strong className="text-white">🇮🇳 India, 🇦🇪 Dubai and 🇬🇧 UK</strong>. Our team carries <strong className="text-white">15+ years of combined expertise</strong> in writing, publishing, design and strategy — serving businesses globally.
             </p>
             <p className="text-[15px] text-white/45 leading-relaxed">
               We're creators — a unison of professionals delivering unparalleled, super-crisp content. Our tagline <strong className="text-white">"We create, you grow"</strong> mirrors our fundamental commitment to your business growth.
@@ -64,7 +64,7 @@ export default function About() {
               </div>
               <div>
                 <p className="font-mono text-[12px] uppercase tracking-eyebrow text-white/30">Location</p>
-                <p className="text-[14px] font-semibold text-white mt-1">Surat, Gujarat, India</p>
+                <p className="text-[14px] font-semibold text-white mt-1">🇮🇳 India · 🇦🇪 Dubai · 🇬🇧 UK</p>
               </div>
               <div>
                 <p className="font-mono text-[12px] uppercase tracking-eyebrow text-white/30">Service Area</p>

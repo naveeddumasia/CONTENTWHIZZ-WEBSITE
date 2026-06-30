@@ -54,7 +54,7 @@ export default function CTASection() {
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
             viewport={{ once: true }} transition={{ delay: 0.45 }}
             className="mt-8 font-mono text-[12px] text-white/20">
-            Mon–Sat 10:00–19:00 IST · info@contentwhizz.in · Surat, Gujarat, India
+            Mon–Sat 10:00–19:00 IST · info@contentwhizz.in · 🇮🇳 India · 🇦🇪 Dubai · 🇬🇧 UK
           </motion.p>
         </motion.div>
       </div>

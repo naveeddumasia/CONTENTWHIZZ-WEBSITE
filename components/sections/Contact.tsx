@@ -29,7 +29,7 @@ export default function Contact() {
                 { icon: "📞", label: "WhatsApp", value: "+91 96382 80338",      href: "tel:09638280338" },
                 { icon: "✉️", label: "Email",    value: "info@contentwhizz.in", href: "mailto:info@contentwhizz.in" },
                 { icon: "🌐", label: "Website",  value: "contentwhizz.in",      href: "http://www.contentwhizz.in/" },
-                { icon: "📍", label: "Location", value: "Surat, Gujarat, India", href: null },
+                { icon: "📍", label: "Location", value: "🇮🇳 India  ·  🇦🇪 Dubai  ·  🇬🇧 UK", href: null },
                 { icon: "🕐", label: "Hours",    value: "Mon–Sat 10:00–19:00 IST", href: null },
               ].map((c) => (
                 <div key={c.label} className="flex items-center gap-4">
