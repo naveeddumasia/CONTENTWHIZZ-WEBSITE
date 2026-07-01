@@ -7,6 +7,7 @@ import Services from "@/components/sections/Services";
 import Work from "@/components/sections/Work";
 import Stats from "@/components/sections/Stats";
 import About from "@/components/sections/About";
+import Founder from "@/components/sections/Founder";
 import Testimonials from "@/components/sections/Testimonials";
 import CTASection from "@/components/sections/CTASection";
 import Contact from "@/components/sections/Contact";
@@ -23,6 +24,7 @@ export default function Home() {
         <Work />
         <Stats />
         <About />
+        <Founder />
         <Testimonials />
         <CTASection />
         <Contact />
