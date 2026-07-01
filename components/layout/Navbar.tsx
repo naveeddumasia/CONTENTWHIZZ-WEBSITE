@@ -62,11 +62,11 @@ export default function Navbar() {
           >
             {links.map((l, i) => (
               <motion.a
-                key={l} href={`#${l.toLowerCase()}`}
+                key={l}
+                href={`#${hrefs[l] ?? l.toLowerCase()}`}
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08, duration: 0.4 }}
                 className="h-display text-[clamp(32px,8vw,52px)] text-white"
-                href={`#${hrefs[l] ?? l.toLowerCase()}`}
                 onClick={() => setMenuOpen(false)}
               >
                 {l}
