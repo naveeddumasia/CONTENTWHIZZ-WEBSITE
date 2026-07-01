@@ -24,17 +24,9 @@ const stats = [
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="section-pad overflow-hidden relative">
+    <section id="portfolio" className="section-pad overflow-hidden">
 
-      {/* Giant ghost watermark */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden" aria-hidden="true">
-        <p className="h-display text-white/[0.025] leading-none whitespace-nowrap"
-          style={{ fontSize: "clamp(100px, 20vw, 280px)", letterSpacing: "-0.04em" }}>
-          PORTFOLIO
-        </p>
-      </div>
-
-      <div className="relative mx-auto max-w-[1400px] px-6 md:px-10">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
 
         {/* Eyebrow */}
         <motion.p
