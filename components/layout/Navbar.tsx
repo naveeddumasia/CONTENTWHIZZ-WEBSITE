@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
 
-const links = ["Services", "Work", "About", "Contact"];
+const links = ["Services", "Portfolio", "About", "Contact"];
+const hrefs: Record<string, string> = { Portfolio: "portfolio" };
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,7 +28,7 @@ export default function Navbar() {
           <ul className="hidden md:flex items-center gap-8">
             {links.map((l) => (
               <li key={l}>
-                <a href={`#${l.toLowerCase()}`} className="text-[13px] text-white/50 hover:text-white transition-colors duration-200 font-medium">
+                <a href={`#${hrefs[l] ?? l.toLowerCase()}`} className="text-[13px] text-white/50 hover:text-white transition-colors duration-200 font-medium">
                   {l}
                 </a>
               </li>
@@ -65,6 +66,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08, duration: 0.4 }}
                 className="h-display text-[clamp(32px,8vw,52px)] text-white"
+                href={`#${hrefs[l] ?? l.toLowerCase()}`}
                 onClick={() => setMenuOpen(false)}
               >
                 {l}
